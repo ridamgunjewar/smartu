@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Summary and Keyword Extractor</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       .highlight {
+            border: 2px solid blue;
+        }
+        /* Style for highlighting the file name */
+        #fileName {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload a PDF file:</h1>
+    <form method="post" enctype="multipart/form-data">
+          <input type="file" name="file" id="fileInput" accept=".pdf" required onchange="highlightFileInput()">
+        <br><br>
+        <!-- Element to display the file name -->
+        <span id="fileName"></span>
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+
+  <script>
+        function highlightFileInput() {
+            // Get the file input element
+            var fileInput = document.getElementById('fileInput');
+            // Get the span element for displaying the file name
+            var fileNameElement = document.getElementById('fileName');
+
+            // Add a class to highlight the file input
+            fileInput.classList.add('highlight');
+
+            // Display the file name
+            fileNameElement.textContent = fileInput.files[0].name;
+        }
+    </script>
+</body>
+</html>
